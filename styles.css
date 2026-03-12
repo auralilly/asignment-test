@@ -1,0 +1,193 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    font-size: 16px;          /* Comfortable reading size */
+}
+
+#container {
+    max-width: 1000px;        /* Typical magazine content width */
+    margin: 40px auto;
+    padding: 0 30px;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);  /* Subtle page shadow */
+    border: 1px solid #ddd;
+}
+
+/* Header / Title area */
+header {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-bottom: 2px solid #000;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3.2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+/* Main article */
+main {
+    padding: 30px 0;
+}
+
+article {
+    max-width: 720px;         /* Classic single-column magazine feel */
+    margin: 0 auto;
+}
+
+/* Photo styling – full-width or hero image */
+article img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Headings */
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #000;
+    margin: 40px 0 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+/* Standfirst / intro paragraph */
+article > p:first-of-type {
+    font-size: 1.15em;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* Body paragraphs */
+article p {
+    margin-bottom: 1.4em;
+}
+
+/* Drop cap for first paragraph after image (magazine touch) */
+article > p:nth-of-type(2)::first-letter {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.8;
+    margin: 0 10px 0 0;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Pull quotes / blockquote styling */
+q, blockquote {
+    display: block;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.3em;
+    line-height: 1.5;
+    margin: 40px 0;
+    padding: 0 60px;
+    text-align: center;
+    color: #444;
+    position: relative;
+}
+
+q::before, blockquote::before,
+q::after, blockquote::after {
+    font-size: 4em;
+    color: #ccc;
+    position: absolute;
+}
+
+q::before, blockquote::before {
+    content: "“";
+    left: 10px;
+    top: -10px;
+}
+
+q::after, blockquote::after {
+    content: "”";
+    right: 10px;
+    bottom: -30px;
+}
+
+/* Strong / bold emphasis */
+strong {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Abbreviations (like CN) with tooltip on hover */
+abbr {
+    border-bottom: 1px dotted #666;
+    cursor: help;
+}
+
+/* Byline / footer */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 40px;
+}
+
+footer small {
+    font-style: italic;
+}
+
+time {
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #container {
+        margin: 20px;
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    article {
+        max-width: 100%;
+    }
+}
+
+/* Print styles – magazine-like when printed */
+@media print {
+    body {
+        background: white;
+    }
+    #container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+    header, footer {
+        page-break-before: avoid;
+    }
+}
