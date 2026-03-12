@@ -1,4 +1,4 @@
-/* Base & page feel – scaled down for less "big" appearance */
+/* Reset & base */
 * {
     margin: 0;
     padding: 0;
@@ -7,128 +7,115 @@
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
-    line-height: 1.45;               /* Tighter than before */
+    line-height: 1.48;
     color: #111;
-    background: #f8f8f8;
-    font-size: 15px;                 /* Smaller base size */
+    background: #f9f9f9;
+    font-size: 15px;
 }
 
 #container {
-    width: 920px;                    /* Slightly narrower */
+    width: 960px;
     margin: 30px auto;
     background: white;
-    padding: 40px 50px 50px;
+    padding: 40px 50px 60px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    border: 1px solid #e0e0e0;
-    position: relative;
-    border-left: 6px solid #f28c38; /* Orange left border accent */
-    border-right: 6px solid #f28c38; /* Orange right border accent */
 }
 
-/* Header – EXIT INTERVIEW in orange */
+/* Box 1: EXIT INTERVIEW – small framed box, no background */
 header {
-    margin-bottom: 25px;
-    text-align: left;
+    margin-bottom: 30px;
+    padding: 8px 20px;
+    border: 2px solid #000;
+    border-left-width: 6px;
+    border-right-width: 6px;
+    display: inline-block;           /* Makes the border hug the text tightly */
 }
 
 h1 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 2.2em;                /* Smaller, less dominant */
+    font-size: 1.6em;
     font-weight: bold;
-    letter-spacing: 1.8px;
     text-transform: uppercase;
-    color: #e67e22;                  /* Orange tone for CN vibe */
-    border-bottom: 2px solid #e67e22;
-    padding-bottom: 6px;
+    letter-spacing: 1.5px;
+    color: #e67e22;                  /* orange as per earlier preference */
+    margin: 0;
 }
 
-/* Main article – two columns, tighter spacing */
-main {
-    column-count: 2;
-    column-gap: 45px;
-    orphans: 3;
-    widows: 3;
-}
-
-article {
-    column-span: all;
-}
-
-/* Photo – top, full-width or floated */
+/* Photo */
 article img {
     width: 100%;
     height: auto;
     display: block;
-    margin: 0 0 25px;                /* Reduced margin */
+    margin: 0 0 25px;
 }
 
-/* @media for float on wider views */
-@media (min-width: 880px) {
-    article img {
-        float: left;
-        width: 45%;
-        margin: 0 25px 20px 0;
-    }
+/* Box 2 approximation: Main title + intro paragraph – full width, subtle box */
+article > h2:first-of-type,
+article > h2:first-of-type + p {
+    border: 1px solid #ccc;
+    padding: 20px 25px;
+    margin-bottom: 35px;
+    background: #fdfdfd;
 }
 
-/* Main title – encourage two-line wrap, bold serif */
-h2:first-of-type {
-    font-family: Georgia, serif;
-    font-size: 2.4em;                /* Balanced size */
-    font-weight: bold;
+article > h2:first-of-type {
+    font-size: 2.5em;
     line-height: 1.1;
-    margin: 0 0 18px;
-    color: #000;
-    column-span: all;
-    clear: both;
-    hyphens: auto;
-    word-wrap: break-word;
+    margin: 0 0 15px 0;
 }
 
-/* Question headings – orange for accent */
-article h2:not(:first-of-type) {
-    font-family: Georgia, serif;
-    font-size: 1.35em;
-    font-weight: bold;
-    margin: 24px 0 8px;
-    color: #e67e22;                  /* Orange questions */
-}
-
-/* Intro/standfirst – spans, slightly smaller */
-article > p:first-of-type {
+article > h2:first-of-type + p {
     font-size: 1.12em;
-    line-height: 1.5;
-    margin-bottom: 28px;
     font-style: italic;
-    column-span: all;
+    margin: 0;
 }
 
-/* Body text – tighter */
-article p {
-    margin-bottom: 1.2em;
-    hyphens: auto;
+/* Box 3 approximation: First few Q&A – two columns */
+article > h2:nth-of-type(2),
+article > h2:nth-of-type(2) ~ p:nth-of-type(1),
+article > h2:nth-of-type(3),
+article > h2:nth-of-type(3) ~ p:nth-of-type(2) {
+    column-count: 2;
+    column-gap: 45px;
+    orphans: 3;
+    widows: 3;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #bbb;
+    background: #fefefe;
 }
 
-/* Emphasis */
-strong {
-    font-weight: bold;
-    color: #000;
+article > h2:nth-of-type(n+2) {
+    font-size: 1.4em;
+    margin: 0 0 12px;
+    break-after: avoid-column;
 }
 
-q {
-    font-style: italic;
+/* Box 4 approximation: Later Q&A – "right side only" (floated right, narrower) */
+article > h2:nth-of-type(n+4),
+article > h2:nth-of-type(n+4) ~ p {
+    width: 48%;
+    float: right;
+    clear: right;
+    margin-left: 4%;
+    margin-bottom: 25px;
+    padding: 18px;
+    border: 1px solid #aaa;
+    background: #f9f9f9;
 }
 
-abbr {
-    border-bottom: 1px dotted #555;
-    cursor: help;
+article > h2:nth-of-type(n+4) {
+    font-size: 1.3em;
+    margin: 0 0 10px;
 }
 
-/* Byline */
+/* Byline – right-aligned in the last "box" */
 article > p:last-of-type {
     font-style: italic;
+    text-align: right;
+    font-size: 1.05em;
     margin-top: 20px;
-    font-size: 1.02em;
+    clear: both;
 }
 
 /* Footer */
@@ -139,35 +126,25 @@ footer {
     text-align: center;
     font-size: 0.9em;
     color: #555;
-    font-family: Arial, sans-serif;
 }
 
-/* Responsive collapse */
-@media (max-width: 800px) {
+/* Responsive fallback */
+@media (max-width: 850px) {
     #container {
         width: auto;
-        margin: 15px;
-        padding: 25px 20px;
-        border-left: 4px solid #f28c38;
-        border-right: 4px solid #f28c38;
+        padding: 20px;
     }
 
-    main {
+    article > h2:nth-of-type(n+2),
+    article > h2:nth-of-type(n+2) ~ p:nth-of-type(1),
+    article > h2:nth-of-type(n+2) ~ p:nth-of-type(2) {
         column-count: 1;
     }
 
-    article img {
+    article > h2:nth-of-type(n+4),
+    article > h2:nth-of-type(n+4) ~ p {
         float: none;
         width: 100%;
-        margin: 0 0 20px;
+        margin-left: 0;
     }
-
-    h1 { font-size: 1.9em; }
-    h2:first-of-type { font-size: 2.1em; }
-}
-
-/* Print */
-@media print {
-    body { background: white; }
-    #container { box-shadow: none; border: none; margin: 0; padding: 0; width: 100%; }
 }
