@@ -1,4 +1,4 @@
-/* Base reset & page feel */
+/* Base & page feel – scaled down for less "big" appearance */
 * {
     margin: 0;
     padding: 0;
@@ -7,159 +7,149 @@
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
-    line-height: 1.48;
+    line-height: 1.45;               /* Tighter than before */
     color: #111;
-    background: #f5f5f5;
-    font-size: 15.5px;           /* ~magazine readable size */
-    -webkit-font-smoothing: antialiased;
+    background: #f8f8f8;
+    font-size: 15px;                 /* Smaller base size */
 }
 
 #container {
-    width: 960px;                 /* Typical broadsheet/magazine column width ~2010 */
-    margin: 40px auto;
+    width: 920px;                    /* Slightly narrower */
+    margin: 30px auto;
     background: white;
-    padding: 50px 60px 60px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    padding: 40px 50px 50px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     border: 1px solid #e0e0e0;
     position: relative;
+    border-left: 6px solid #f28c38; /* Orange left border accent */
+    border-right: 6px solid #f28c38; /* Orange right border accent */
 }
 
-/* Header – EXIT INTERVIEW section marker */
+/* Header – EXIT INTERVIEW in orange */
 header {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    color: #444;
-    text-transform: uppercase;
-    border-bottom: 1px solid #000;
-    padding-bottom: 8px;
 }
 
 h1 {
-    font-family: Georgia, serif;
-    font-size: 3.6em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.2em;                /* Smaller, less dominant */
     font-weight: bold;
-    line-height: 1;
-    margin: 0 0 12px;
-    color: #000;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #e67e22;                  /* Orange tone for CN vibe */
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 6px;
 }
 
-/* Main article – two-column for Q&A */
+/* Main article – two columns, tighter spacing */
 main {
     column-count: 2;
-    column-gap: 50px;
+    column-gap: 45px;
     orphans: 3;
     widows: 3;
 }
 
 article {
-    column-span: all;             /* Intro spans both columns */
+    column-span: all;
 }
 
-/* Hero image – top, spans full width or left-aligned with wrap */
+/* Photo – top, full-width or floated */
 article img {
     width: 100%;
     height: auto;
     display: block;
-    margin: 0 0 30px;
+    margin: 0 0 25px;                /* Reduced margin */
 }
 
-/* For better flow: make image float left on wider screens, text wrap */
-@media (min-width: 900px) {
+/* @media for float on wider views */
+@media (min-width: 880px) {
     article img {
         float: left;
-        width: 48%;
-        margin: 0 30px 20px 0;
+        width: 45%;
+        margin: 0 25px 20px 0;
     }
 }
 
-/* Main title – large, bold, spans full */
-h2:first-of-type {                    /* "The road well travelled" */
+/* Main title – encourage two-line wrap, bold serif */
+h2:first-of-type {
     font-family: Georgia, serif;
-    font-size: 2.8em;
+    font-size: 2.4em;                /* Balanced size */
     font-weight: bold;
-    line-height: 1.05;
-    margin: 0 0 20px;
+    line-height: 1.1;
+    margin: 0 0 18px;
     color: #000;
     column-span: all;
     clear: both;
+    hyphens: auto;
+    word-wrap: break-word;
 }
 
-/* Question headings – bold, slightly larger, no bottom border */
+/* Question headings – orange for accent */
 article h2:not(:first-of-type) {
     font-family: Georgia, serif;
-    font-size: 1.45em;
+    font-size: 1.35em;
     font-weight: bold;
-    margin: 28px 0 10px;
-    color: #000;
+    margin: 24px 0 8px;
+    color: #e67e22;                  /* Orange questions */
 }
 
-/* Byline/intro paragraph – spans, italic-ish feel */
+/* Intro/standfirst – spans, slightly smaller */
 article > p:first-of-type {
-    font-size: 1.18em;
-    line-height: 1.55;
-    margin-bottom: 32px;
+    font-size: 1.12em;
+    line-height: 1.5;
+    margin-bottom: 28px;
     font-style: italic;
     column-span: all;
 }
 
-/* Body paragraphs */
+/* Body text – tighter */
 article p {
-    margin-bottom: 1.35em;
+    margin-bottom: 1.2em;
     hyphens: auto;
 }
 
-/* Strong (names, emphasis) */
+/* Emphasis */
 strong {
     font-weight: bold;
+    color: #000;
 }
 
-/* Quotes inside <q> or just text */
 q {
     font-style: italic;
 }
 
-/* Abbreviations with underline tooltip */
 abbr {
     border-bottom: 1px dotted #555;
     cursor: help;
 }
 
-/* Byline at end */
+/* Byline */
 article > p:last-of-type {
     font-style: italic;
-    margin-top: 25px;
-    font-size: 1.05em;
+    margin-top: 20px;
+    font-size: 1.02em;
 }
 
-/* Footer – page number + date + magazine name */
+/* Footer */
 footer {
-    margin-top: 60px;
-    padding-top: 25px;
-    border-top: 1px solid #aaa;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
     text-align: center;
-    font-size: 0.95em;
-    color: #444;
+    font-size: 0.9em;
+    color: #555;
     font-family: Arial, sans-serif;
 }
 
-footer small {
-    font-style: normal;
-}
-
-time {
-    font-weight: bold;
-}
-
-/* Responsive – collapse to single column on smaller screens */
-@media (max-width: 850px) {
+/* Responsive collapse */
+@media (max-width: 800px) {
     #container {
         width: auto;
-        margin: 20px;
-        padding: 30px 20px;
+        margin: 15px;
+        padding: 25px 20px;
+        border-left: 4px solid #f28c38;
+        border-right: 4px solid #f28c38;
     }
 
     main {
@@ -169,22 +159,15 @@ time {
     article img {
         float: none;
         width: 100%;
-        margin: 0 0 25px;
+        margin: 0 0 20px;
     }
 
-    h2:first-of-type {
-        font-size: 2.4em;
-    }
+    h1 { font-size: 1.9em; }
+    h2:first-of-type { font-size: 2.1em; }
 }
 
-/* Print optimization – looks like magazine page */
+/* Print */
 @media print {
     body { background: white; }
-    #container {
-        box-shadow: none;
-        border: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
+    #container { box-shadow: none; border: none; margin: 0; padding: 0; width: 100%; }
 }
