@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Base reset & page feel */
 * {
     margin: 0;
     padding: 0;
@@ -7,187 +7,184 @@
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-    font-size: 16px;          /* Comfortable reading size */
+    line-height: 1.48;
+    color: #111;
+    background: #f5f5f5;
+    font-size: 15.5px;           /* ~magazine readable size */
+    -webkit-font-smoothing: antialiased;
 }
 
 #container {
-    max-width: 1000px;        /* Typical magazine content width */
+    width: 960px;                 /* Typical broadsheet/magazine column width ~2010 */
     margin: 40px auto;
-    padding: 0 30px;
     background: white;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);  /* Subtle page shadow */
-    border: 1px solid #ddd;
+    padding: 50px 60px 60px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    border: 1px solid #e0e0e0;
+    position: relative;
 }
 
-/* Header / Title area */
+/* Header – EXIT INTERVIEW section marker */
 header {
-    text-align: center;
-    padding: 40px 0 20px;
-    border-bottom: 2px solid #000;
+    margin-bottom: 35px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: #444;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 8px;
 }
 
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 3.2em;
+    font-family: Georgia, serif;
+    font-size: 3.6em;
     font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    line-height: 1;
+    margin: 0 0 12px;
     color: #000;
 }
 
-/* Main article */
+/* Main article – two-column for Q&A */
 main {
-    padding: 30px 0;
+    column-count: 2;
+    column-gap: 50px;
+    orphans: 3;
+    widows: 3;
 }
 
 article {
-    max-width: 720px;         /* Classic single-column magazine feel */
-    margin: 0 auto;
+    column-span: all;             /* Intro spans both columns */
 }
 
-/* Photo styling – full-width or hero image */
+/* Hero image – top, spans full width or left-aligned with wrap */
 article img {
     width: 100%;
     height: auto;
     display: block;
-    margin: 20px 0 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin: 0 0 30px;
 }
 
-/* Headings */
-h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.8em;
+/* For better flow: make image float left on wider screens, text wrap */
+@media (min-width: 900px) {
+    article img {
+        float: left;
+        width: 48%;
+        margin: 0 30px 20px 0;
+    }
+}
+
+/* Main title – large, bold, spans full */
+h2:first-of-type {                    /* "The road well travelled" */
+    font-family: Georgia, serif;
+    font-size: 2.8em;
     font-weight: bold;
+    line-height: 1.05;
+    margin: 0 0 20px;
     color: #000;
-    margin: 40px 0 15px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 8px;
+    column-span: all;
+    clear: both;
 }
 
-/* Standfirst / intro paragraph */
+/* Question headings – bold, slightly larger, no bottom border */
+article h2:not(:first-of-type) {
+    font-family: Georgia, serif;
+    font-size: 1.45em;
+    font-weight: bold;
+    margin: 28px 0 10px;
+    color: #000;
+}
+
+/* Byline/intro paragraph – spans, italic-ish feel */
 article > p:first-of-type {
-    font-size: 1.15em;
+    font-size: 1.18em;
+    line-height: 1.55;
+    margin-bottom: 32px;
     font-style: italic;
-    margin-bottom: 30px;
-    line-height: 1.7;
+    column-span: all;
 }
 
 /* Body paragraphs */
 article p {
-    margin-bottom: 1.4em;
+    margin-bottom: 1.35em;
+    hyphens: auto;
 }
 
-/* Drop cap for first paragraph after image (magazine touch) */
-article > p:nth-of-type(2)::first-letter {
-    float: left;
-    font-size: 3.5em;
-    line-height: 0.8;
-    margin: 0 10px 0 0;
-    font-weight: bold;
-    color: #000;
-}
-
-/* Pull quotes / blockquote styling */
-q, blockquote {
-    display: block;
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 1.3em;
-    line-height: 1.5;
-    margin: 40px 0;
-    padding: 0 60px;
-    text-align: center;
-    color: #444;
-    position: relative;
-}
-
-q::before, blockquote::before,
-q::after, blockquote::after {
-    font-size: 4em;
-    color: #ccc;
-    position: absolute;
-}
-
-q::before, blockquote::before {
-    content: "“";
-    left: 10px;
-    top: -10px;
-}
-
-q::after, blockquote::after {
-    content: "”";
-    right: 10px;
-    bottom: -30px;
-}
-
-/* Strong / bold emphasis */
+/* Strong (names, emphasis) */
 strong {
     font-weight: bold;
-    color: #000;
 }
 
-/* Abbreviations (like CN) with tooltip on hover */
+/* Quotes inside <q> or just text */
+q {
+    font-style: italic;
+}
+
+/* Abbreviations with underline tooltip */
 abbr {
-    border-bottom: 1px dotted #666;
+    border-bottom: 1px dotted #555;
     cursor: help;
 }
 
-/* Byline / footer */
+/* Byline at end */
+article > p:last-of-type {
+    font-style: italic;
+    margin-top: 25px;
+    font-size: 1.05em;
+}
+
+/* Footer – page number + date + magazine name */
 footer {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid #aaa;
     text-align: center;
-    padding: 30px 0;
-    border-top: 1px solid #ccc;
-    font-size: 0.9em;
-    color: #555;
-    margin-top: 40px;
+    font-size: 0.95em;
+    color: #444;
+    font-family: Arial, sans-serif;
 }
 
 footer small {
-    font-style: italic;
+    font-style: normal;
 }
 
 time {
     font-weight: bold;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Responsive – collapse to single column on smaller screens */
+@media (max-width: 850px) {
     #container {
+        width: auto;
         margin: 20px;
-        padding: 0 15px;
+        padding: 30px 20px;
     }
-    
-    h1 {
-        font-size: 2.5em;
+
+    main {
+        column-count: 1;
     }
-    
-    h2 {
-        font-size: 1.6em;
+
+    article img {
+        float: none;
+        width: 100%;
+        margin: 0 0 25px;
     }
-    
-    article {
-        max-width: 100%;
+
+    h2:first-of-type {
+        font-size: 2.4em;
     }
 }
 
-/* Print styles – magazine-like when printed */
+/* Print optimization – looks like magazine page */
 @media print {
-    body {
-        background: white;
-    }
+    body { background: white; }
     #container {
         box-shadow: none;
         border: none;
         margin: 0;
         padding: 0;
-        max-width: none;
-    }
-    header, footer {
-        page-break-before: avoid;
+        width: 100%;
     }
 }
